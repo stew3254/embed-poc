@@ -55,10 +55,9 @@ log = open("poc.log", "a")
 def log_request_info():
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
     ip = get_client_ip(request)
-    print(f"[{timestamp}] {request.host} {request.path} {ip}")
+    logging.info(f"[{timestamp}] {request.host} {request.path} {ip}")
 @app.route("/")
 def index():
-    logging.info("test")
     return render_template("index.html", url=request.url_root)
 
 @app.route("/ip.png")
