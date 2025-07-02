@@ -19,7 +19,7 @@ def generate_image(ip):
     font_size = 64
 
     # Load font (use default or a .ttf font)
-    font = ImageFont.truetype("Inconsolata Bold Nerd Font Complete.ttf", font_size)
+    font = ImageFont.truetype("Inconsolata.otf", font_size)
 
     # Create image
     img = Image.new("RGB", (image_width, image_height), color=background_color)
@@ -72,7 +72,10 @@ def serve_ip():
 
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(
+        filename="poc.log",
+        level=logging.INFO,
+    )
     # Create the images directory
     os.makedirs("imgs", exist_ok=True)
 
