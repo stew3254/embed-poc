@@ -1,5 +1,7 @@
-import os
+#!/usr/bin/env python3
 import logging
+import os
+import sys
 
 from datetime import datetime, timezone
 from flask import Flask, render_template, request, send_file
@@ -74,7 +76,11 @@ def main():
     # Create the images directory
     os.makedirs("imgs", exist_ok=True)
 
-    app.run(debug=True, host="0.0.0.0", port=1337)
+    port = 1337
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+
+    app.run(debug=True, host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
